@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://example.geode.gopinnath.ind/model"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+    jaxb:extensionBindingPrefixes="xjc"
+    jaxb:version="2.1"
+	xmlns:tns="http://example.geode.gopinnath.ind/model"
+	elementFormDefault="qualified">
+	
+	<annotation>
+		<appinfo>
+			<jaxb:globalBindings generateIsSetMethod="true">
+				<xjc:serializable uid="1"/>
+			</jaxb:globalBindings>
+		</appinfo>
+	</annotation>
+	
+	<complexType name="SkillType">
+		<sequence>
+			<element name="skillName" type="string"></element>
+			<element name="skillCategory" type="tns:SkillCategoryType"
+				minOccurs="0">
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="SkillCategoryType">
+		<sequence>
+			<element name="skillCategoryName" type="string"></element>
+		</sequence>
+	</complexType>
+	
+	<element name="skill" type="tns:SkillType"></element>
+	<element name="skills">
+		<complexType>
+			<sequence>
+				<element ref="tns:skill" minOccurs="0" maxOccurs="unbounded" />
+			</sequence>
+		</complexType>
+	</element>
+</schema>
